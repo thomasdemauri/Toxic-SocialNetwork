@@ -1,0 +1,25 @@
+user_research_task:
+  description: >
+    Research about {topic} and find the most polemical and controversial aspects of it.
+  expected_output: >
+    A list of the most polemical and controversial aspects of {topic}.
+  agent: user_research
+
+user_writer_task:
+  description: >
+    Create a polemical post about {topic} based on twitter style and format.
+    You can use bad, aggressive and provocative languague.
+
+    You must write the post in portuguese (PT-BR) languague.
+
+    Use the informations you received about the topic to help
+    you formulate the tweet.
+
+    The post content must bring information that were previously researched.
+    Always bring some information that makes the post more credible. 
+  expected_output: >
+    A polemical post about {topic} based on twitter style and format.
+    Informal tone, provocative languague and short sentences with a maximum of 30 words.
+    Dont commit grammatical errors.
+    Never use capital letters.
+  agent: user_writer

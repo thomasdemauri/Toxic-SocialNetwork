@@ -1,0 +1,25 @@
+[project]
+name = "toxic_network"
+version = "0.1.0"
+description = "toxic_network using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[azure-ai-inference,tools]==1.9.0",
+    "langchain-openai>=0.3.23",
+]
+
+[project.scripts]
+toxic_network = "toxic_network.main:run"
+run_crew = "toxic_network.main:run"
+train = "toxic_network.main:train"
+replay = "toxic_network.main:replay"
+test = "toxic_network.main:test"
+run_with_trigger = "toxic_network.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
