@@ -18,7 +18,8 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'BBB 2026',
+        'topic': 'Corinthians campeao',
+        'current_year': 2026
     }
 
     try:

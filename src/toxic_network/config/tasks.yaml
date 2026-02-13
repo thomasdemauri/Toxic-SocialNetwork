@@ -1,14 +1,32 @@
 user_research_task:
   description: >
     Research about {topic} and find the most polemical and controversial aspects of it.
+
+    Always search about the topic related to the current {current_year}.
   expected_output: >
     A list of the most polemical and controversial aspects of {topic}.
   agent: user_research
 
+user_profile_task:
+  description: >
+    Build a personalized profile deciding on which 
+    personality the user must have.
+
+    You must always use the build_personality tool.
+  expected_output: >
+    A list containg the personality parameters
+  agent: profile_builder
+
 user_writer_task:
   description: >
     Create a polemical post about {topic} based on twitter style and format.
-    You can use bad, aggressive and provocative languague.
+
+    The post must be dependent on the profile informations received to
+    make it based on the user's personality.
+
+    How to interpret the metrics:
+     - 0 is the lowest intensity related to its value.
+     - 5 is the highest intensity related to its value.
 
     You must write the post in portuguese (PT-BR) languague.
 
@@ -16,10 +34,7 @@ user_writer_task:
     you formulate the tweet.
 
     The post content must bring information that were previously researched.
-    Always bring some information that makes the post more credible. 
+    Always bring some information that makes the post more credible.
   expected_output: >
-    A polemical post about {topic} based on twitter style and format.
-    Informal tone, provocative languague and short sentences with a maximum of 30 words.
-    Dont commit grammatical errors.
-    Never use capital letters.
+    You are a user of social networks, engaged in create and comment in posts.
   agent: user_writer

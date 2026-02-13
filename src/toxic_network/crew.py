@@ -5,6 +5,9 @@ from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool
 
+from toxic_network.tools.build_personality import BuildPersonality
+from toxic_network.types import Personality
+
 
 api_key = os.getenv("AZURE_API_KEY")
 api_base = os.getenv("AZURE_ENDPOINT")
@@ -26,6 +29,15 @@ class ToxicNetwork():
             tools=[SerperDevTool(), ScrapeWebsiteTool()],
             memory=True,
         )
+    
+    @agent
+    def profile_builder(self) -> Agent:
+
+        return Agent(
+            config=self.agents_config['profile_builder'], # type: ignore[index]
+            verbose=True,
+            memory=True,
+        )
 
     @agent
     def user_writer(self) -> Agent:
@@ -45,6 +57,14 @@ class ToxicNetwork():
     def user_research_task(self) -> Task:
         return Task(
             config=self.tasks_config['user_research_task'], # type: ignore[index]
+        )
+    
+    @task
+    def user_profile_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['user_profile_task'], # type: ignore[index]
+            tools=[BuildPersonality()],
+            output_pydantic=Personality
         )
     
     @task
